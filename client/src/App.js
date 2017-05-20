@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import Header from './Header'
 import QuestionContainer from './QuestionContainer'
 import ExplorationContainer from './ExplorationContainer'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './store/reducer'
 import './App.css'
+
+let store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const styles = {
   container: {
@@ -18,13 +23,15 @@ const styles = {
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <div style={styles.container}>
-          <QuestionContainer />
-          <ExplorationContainer />
+      <Provider store={store}>
+        <div className="App">
+          <Header />
+          <div style={styles.container}>
+            <QuestionContainer />
+            <ExplorationContainer />
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }
