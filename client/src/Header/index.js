@@ -27,7 +27,7 @@ class Header extends Component {
   render() {
     return(
       <div className='header'>
-        <div style={styles.logo}>educare</div>
+        <NavLink className='logo' to='/'><div style={styles.logo}>educare</div></NavLink>
         <div style={styles.user}>Maria</div>
       </div>
     )
