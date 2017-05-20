@@ -2,10 +2,8 @@ const app = require('koa');
 const router = require('koa-router')();
 const mockData = require('./mock');
 
-// GET a question based on id and its answers
+// GET a question based on :id and its answers
 router.get('/questions/:id', (ctx, next) => {
-
-  // Get data from db and filter by question_id
   let question = mockData.questions.filter((question) => {
     return question.id == ctx.params.id;
   });
@@ -18,8 +16,15 @@ router.get('/questions/:id', (ctx, next) => {
   else ctx.response.body = { question, answers };
 });
 
-// get questions based on a category
-// get /questions/:category
+// GET questions based on a :category
+router.get('/questions/cat/:category', (ctx, next) => {
+  let questions = mockData.questions.filter((question) => {
+    return question.category.toLowerCase() === ctx.params.category.toLowerCase();
+  });
+
+  if (!questions) ctx.status = 404;
+  else ctx.response.body = questions;
+});
 
 // post a question
 // post /questions/:category
