@@ -1,0 +1,53 @@
+.explorationContainer{
+  width: 75%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nature{
+  background-color: rgba(73, 164, 63, 0.8);
+}
+.nature:hover{
+  background-color: rgba(73, 164, 63, 0.6);
+}
+.nature:active{
+  background-color: rgba(73, 164, 63, 1);
+}
+
+.science{
+  background-color: rgba(74, 144, 226, 0.8);
+}
+.science:hover{
+  background-color: rgba(74, 144, 226, 0.6);
+}
+.science:active{
+  background-color: rgba(74, 144, 226, 1);
+}
+
+.humanities{
+  background-color: rgba(248, 231, 28, 0.8);
+}
+.humanities:hover{
+  background-color: rgba(248, 231, 28, 0.6);
+}
+.humanities:active{
+  background-color: rgba(248, 231, 28, 1);
+}
+
+.navlink{
+  text-decoration: none;
+}
+
+@media (max-width: 620px) {
+  .categoriesBox{
+    flex-direction: column;
+  }
+}
+@media (min-width: 620px) {
+  .categoriesBox{
+    flex-direction: row;
+  }
+}

@@ -7,7 +7,9 @@ const styles = {
     width: 150,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontSize: '1.2em',
+    fontFamily: 'Gloria Hallelujah'
   },
   user: {
     height: '100%',

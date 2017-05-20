@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import drawing from 'atrament'
 import './style.css'
 
 const styles = {
   question: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    width: 580,
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     margin: 50,
@@ -15,7 +14,7 @@ const styles = {
     color: 'white'
   },
   input: {
-    width: 480,
+    width: '80%',
     borderRadius: 40,
     fontSize: '1em',
     borderStyle: 'none',
@@ -28,20 +27,20 @@ const styles = {
     fontFamily: 'Gloria Hallelujah'
   },
   button: {
-    width: 100,
+    width: '20%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     cursor: 'pointer',
+    fontFamily: 'Gloria Hallelujah'
   }
 }
+
 
 const initState = {
   question: '',
   textAreaHeight: 40
 }
-
-
 
 class QuestionContainer extends Component {
   constructor(props) {
@@ -75,7 +74,7 @@ class QuestionContainer extends Component {
           'Content-Type': 'application/json'
         })
       })
-
+      this.setState(initState)
     }
   }
 
@@ -96,7 +95,6 @@ class QuestionContainer extends Component {
             onClick={this.sendQuestion}
             >Send</div>
         </div>
-        <canvas id="drawing" width="500px" height="500px" />
       </div>
     )
   }
