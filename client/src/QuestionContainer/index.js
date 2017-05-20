@@ -52,7 +52,6 @@ class QuestionContainer extends Component {
   handleText = (e) => {
     this.setState({question: e.target.value})
     this.resetSize()
-    console.log(this.state.question.length);
   }
 
   resetSize = () => {
@@ -62,6 +61,21 @@ class QuestionContainer extends Component {
         this.setState({textAreaHeight: 60})
     } else if (this.state.question.length > 100) {
         this.setState({textAreaHeight: 80})
+    }
+  }
+
+  sendQuestion = () => {
+    if (this.state.question.length > 1){
+
+      const question = JSON.stringify({question:this.state.question})
+      fetch('http://localhost:3000/questions', {
+        method: 'POST',
+        body: question,
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      })
+
     }
   }
 
@@ -76,7 +90,11 @@ class QuestionContainer extends Component {
             onChange={this.handleText}
             value={this.state.question}
             onKeyDown={this.checkKey}></textarea>
-          <div style={styles.button} className='button'>Send</div>
+          <div
+            style={styles.button}
+            className='button'
+            onClick={this.sendQuestion}
+            >Send</div>
         </div>
         <canvas id="drawing" width="500px" height="500px" />
       </div>
