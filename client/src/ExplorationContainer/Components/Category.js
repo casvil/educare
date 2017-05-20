@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Question from './Question'
 
 import { changeCategory } from '../../store/actions'
 
@@ -25,7 +26,7 @@ class Category extends Component {
       <div>
         {
           this.state.questions.map((question, i) => {
-            return <div key={i}>{question.body}</div>
+            return <Question key={i} question={question.body} />
           })
         }
       </div>
