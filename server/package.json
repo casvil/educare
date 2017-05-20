@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/casvil/educare/issues"
   },
-  "homepage": "https://github.com/casvil/educare#readme"
+  "homepage": "https://github.com/casvil/educare#readme",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-router": "^7.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
 }
