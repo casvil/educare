@@ -1,3 +1,5 @@
+'use strict';
+
 const app = require('koa');
 const router = require('koa-router')();
 const mockData = require('./mock');
@@ -25,8 +27,11 @@ router.get('/questions/cat/:category', (ctx, next) => {
   else ctx.response.body = questions;
 });
 
-// post a question
-// post /questions/:category
+// POST a question
+router.post('/questions', (ctx, next) => {
+  console.log(ctx.request.body);
+  ctx.response.body = 'hello world';
+});
 
 // post an answer to an specific question
 // post /answers/:q_id
