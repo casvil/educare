@@ -21,8 +21,7 @@ router.get('/questions/cat/:category', (ctx, next) => {
   let questions = mockData.questions.filter((question) => {
     return question.category.toLowerCase() === ctx.params.category.toLowerCase();
   });
-
-  if (!questions) ctx.status = 404;
+  if (questions.length === 0) ctx.status = 404;
   else ctx.response.body = questions;
 });
 
