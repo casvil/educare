@@ -19,3 +19,11 @@
   border: 1px solid;
   color: white;
 }
+
+.button:hover{
+  font-size: 1.2em;
+}
+
+.button:active{
+  color:black;
+}
