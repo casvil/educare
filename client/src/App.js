@@ -3,15 +3,12 @@ import Header from './Header'
 import QuestionContainer from './QuestionContainer'
 import ExplorationContainer from './ExplorationContainer'
 import Category from './ExplorationContainer/Components/Category'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 import {
   BrowserRouter as Router, Route
 } from 'react-router-dom'
-import reducer from './store/reducer'
 import './App.css'
 
-let store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const styles = {
   container: {
@@ -31,24 +28,40 @@ class App extends Component {
     }
   }
 
-  changeColor = (page) => {
-    if (page === 'main') {
+  componentWillReceiveProps(nextprops) {
+    if (nextprops.category === 'main') {
       this.setState({background: {
         backgroundColor: 'rgb(239, 16, 62)'
       }
     })
     }
-    else if (page === 'science') {
+    else if (nextprops.category === 'science') {
       this.setState({background: {
-        backgroundColor: 'rgb(0, 16, 62)'
+        backgroundColor: 'rgba(74, 144, 226, 0.8)'
+      }
+    })
+  }
+    else if (nextprops.category === 'nature') {
+      this.setState({background: {
+        backgroundColor: 'rgba(73, 164, 63, 0.8)'
+      }
+    })
+  }
+    else if (nextprops.category === 'humanities') {
+      this.setState({background: {
+        backgroundColor: 'rgba(248, 231, 28, 0.8)'
       }
     })
     }
+  }
+
+  changeColor = (page) => {
+
 
   }
   render() {
     return (
-      <Provider store={store}>
+
         <Router>
           <div style={this.state.background} className="App">
             <Header />
@@ -59,9 +72,12 @@ class App extends Component {
             </div>
           </div>
         </Router>
-      </Provider>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  category: state.category
+})
+
+export default connect(mapStateToProps)(App);

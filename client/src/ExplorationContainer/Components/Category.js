@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { changeCategory } from '../../store/actions'
 
 class Category extends Component {
   constructor(props){
@@ -7,13 +10,12 @@ class Category extends Component {
     this.state = {questions: []}
   }
   componentDidMount(){
-
+    this.props.changeCategory(this.props.match.params.category)
     fetch(`http://localhost:3000/questions/cat/${this.props.match.params.category}`)
       .then(res => res.json())
       .then(questions => {
         if (questions) {
           this.setState({questions: questions})
-          console.log(questions);
         }
       })
 
@@ -31,4 +33,12 @@ class Category extends Component {
   }
 }
 
-export default withRouter(Category)
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (category) => dispatch(changeCategory(category))
+})
+
+const mapStateToProps = (state) => ({
+
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Category))

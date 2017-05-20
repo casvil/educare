@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { changeCategory } from '../store/actions'
 import './style.css'
 
 const styles = {
@@ -23,6 +25,10 @@ const styles = {
 }
 
 class ExplorationContainer extends Component {
+  componentDidMount() {
+
+    this.props.changeCategory('main')
+  }
 
   render() {
     return (
@@ -46,4 +52,8 @@ class ExplorationContainer extends Component {
   }
 }
 
-export default ExplorationContainer
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (category) => dispatch(changeCategory(category))
+})
+
+export default connect(null, mapDispatchToProps)(ExplorationContainer)
