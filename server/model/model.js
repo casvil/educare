@@ -20,9 +20,6 @@ const answerSchema = new Schema({
   body: { type: String, required: true },
 });
 
-// module.exports =
-// module.exports =
-// module.exports = mongoose.connection;
 module.exports = {
   questions: mongoose.model('questions', questionSchema),
   answers: mongoose.model('answers', answerSchema)
