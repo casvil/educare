@@ -20,7 +20,8 @@
     "koa": "^2.2.0",
     "koa-cors": "0.0.16",
     "koa-router": "^7.1.1",
-    "mongoose": "^4.10.0"
+    "mongoose": "^4.10.0",
+    "mongoose-auto-increment": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

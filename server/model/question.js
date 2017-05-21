@@ -1,10 +1,12 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/educare');
+const conn = mongoose.connect('mongodb://localhost:27017/educare');
+autoIncrement.initialize(conn);
 
 const questionSchema = new Schema({
   id: Number,
@@ -19,6 +21,8 @@ const answerSchema = new Schema({
   question_id: Number,
   body: { type: String, required: true },
 });
+
+questionSchema.plugin(autoIncrement.plugin, { model: 'questions', field: 'id' });
 
 module.exports = {
   questions: mongoose.model('questions', questionSchema),

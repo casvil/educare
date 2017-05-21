@@ -27,8 +27,6 @@ exports.getCategoryQuestions = (ctx, next) => {
 exports.postOne = async (ctx, next) => {
   let question = new db.questions(
     {
-      // To fix: id auto-increment
-      id: 5,
       user_id: 1,
       body: JSON.stringify(ctx.request.body.question),
       image: '/blablabla.png',
