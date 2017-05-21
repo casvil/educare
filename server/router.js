@@ -3,6 +3,7 @@
 const app = require('koa');
 const router = require('koa-router')();
 const mockData = require('./mock');
+const db = require('./model/model');
 
 // GET a question based on :id and its answers
 router.get('/questions/:id', (ctx, next) => {
@@ -28,9 +29,21 @@ router.get('/questions/cat/:category', (ctx, next) => {
 });
 
 // POST a question
-router.post('/questions', (ctx, next) => {
-  console.log(ctx.request.body);
-  ctx.response.body = 'hello world';
+router.post('/questions', async (ctx, next) => {
+
+  let question = new db.questions(
+    {
+      id: 5,
+      user_id: 1,
+      body: JSON.stringify(ctx.request.body.question),
+      image: '/blablabla.png',
+      category: 'Nature'
+    }
+  );
+
+  // Save the question and set
+  await question.save();
+  ctx.response.status = 200;
 });
 
 // post an answer to an specific question
