@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { changeCategory } from '../store/actions'
-import './style.css'
+'use strict';
+
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { changeCategory } from '../store/actions';
+import './style.css';
 
 const styles = {
   categories: {
@@ -10,11 +12,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    fontFamily: 'Gloria Hallelujah'
+    fontFamily: 'Gloria Hallelujah',
+    fontSize: '30px'
   },
   category: {
     height: 150,
-    width: 150,
+    width: 200,
     borderRadius: 20,
     display: 'flex',
     justifyContent: 'center',
@@ -26,7 +29,6 @@ const styles = {
 
 class ExplorationContainer extends Component {
   componentDidMount() {
-
     this.props.changeCategory('main')
   }
 

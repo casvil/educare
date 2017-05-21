@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+'use strict';
+
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const styles = {
   container: {

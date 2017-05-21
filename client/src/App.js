@@ -3,6 +3,7 @@ import Header from './Header'
 import QuestionContainer from './QuestionContainer'
 import ExplorationContainer from './ExplorationContainer'
 import Category from './ExplorationContainer/Components/Category'
+import Answer from './ExplorationContainer/Components/Answer'
 import { connect } from 'react-redux'
 import {
   BrowserRouter as Router, Route
@@ -69,6 +70,7 @@ class App extends Component {
               <QuestionContainer />
               <Route exact path='/' component={ExplorationContainer} />
               <Route path='/:category' component={Category} />
+              <Route path='/question/:id' component={Answer} />
             </div>
           </div>
         </Router>
