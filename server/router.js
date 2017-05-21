@@ -3,48 +3,17 @@
 const app = require('koa');
 const router = require('koa-router')();
 const mockData = require('./mock');
-const db = require('./model/model');
+const db = require('./model/question');
+const question = require('./controller/question');
 
 // GET a question based on :id and its answers
-router.get('/questions/:id', (ctx, next) => {
-  let question = mockData.questions.filter((question) => {
-    return question.id == ctx.params.id;
-  });
-
-  let answers = mockData.answers.filter((answer) => {
-    return answer.question_id == ctx.params.id;
-  });
-
-  if (!question.length) ctx.status = 404;
-  else ctx.response.body = { question, answers };
-});
+router.get('/questions/:id', question.getOne);
 
 // GET questions based on a :category
-router.get('/questions/cat/:category', (ctx, next) => {
-  let questions = mockData.questions.filter((question) => {
-    return question.category.toLowerCase() === ctx.params.category.toLowerCase();
-  });
-  if (questions.length === 0) ctx.status = 404;
-  else ctx.response.body = questions;
-});
+router.get('/questions/cat/:category', question.getCategoryQuestions);
 
 // POST a question
-router.post('/questions', async (ctx, next) => {
-
-  let question = new db.questions(
-    {
-      id: 5,
-      user_id: 1,
-      body: JSON.stringify(ctx.request.body.question),
-      image: '/blablabla.png',
-      category: 'Nature'
-    }
-  );
-
-  // Save the question and set
-  await question.save();
-  ctx.response.status = 200;
-});
+router.post('/questions', question.postOne);
 
 // post an answer to an specific question
 // post /answers/:q_id

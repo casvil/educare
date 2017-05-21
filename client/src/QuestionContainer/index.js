@@ -7,7 +7,9 @@ const styles = {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    margin: 50,
+    marginTop: 50,
+    marginRight: 50,
+    marginLeft: 50,
     borderRadius: 40,
     border: 'none',
     borderWidth: 1,
@@ -33,9 +35,14 @@ const styles = {
     alignItems: 'center',
     cursor: 'pointer',
     fontFamily: 'Gloria Hallelujah'
+  },
+  draw: {
+    width: '100%',
+    height: '0',
+    borderRadius: 40,
+    backgroundColor: 'white'
   }
 }
-
 
 const initState = {
   question: '',
@@ -57,10 +64,15 @@ class QuestionContainer extends Component {
     if (this.state.question.length < 48) {
       this.setState({textAreaHeight: 40})
     } else if (this.state.question.length > 50) {
-        this.setState({textAreaHeight: 60})
+      this.setState({textAreaHeight: 60})
     } else if (this.state.question.length > 100) {
-        this.setState({textAreaHeight: 80})
+      this.setState({textAreaHeight: 80})
     }
+    this.displayDraw();
+  }
+
+  displayDraw = () => {
+
   }
 
   sendQuestion = () => {
@@ -88,12 +100,12 @@ class QuestionContainer extends Component {
             maxLength={300}
             onChange={this.handleText}
             value={this.state.question}
-            onKeyDown={this.checkKey}></textarea>
+            onKeyDown={this.checkKey}
+            placeholder='Ask something'></textarea>
           <div
             style={styles.button}
             className='button'
-            onClick={this.sendQuestion}
-            >Send</div>
+            onClick={this.sendQuestion}>Send</div>
         </div>
       </div>
     )
